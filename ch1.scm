@@ -70,13 +70,13 @@ display
 
 ;; Exercise 1.5
 ;; Applicative-order: It will fall in infinite recursion, since the second argument
-;; will have to be evaluated
+;; , an infinite function, will have to be evaluated
 ;;
 ;; Normal-order: It will output 0, since the second parameter won't be avaliated,
 ;; since it's never needed.
 
 
-;; Square-root approximation using Newton's method
+;; Square-root approximation using Heron's method
 
 (define (average x y)
   (/ (+ x y) 2))
@@ -93,4 +93,23 @@ display
       (sqrt-iter (improve guess x) x)))
 
 (define (sqrt x)
-  (sqrt-iter (/ x 2) x))
+  (sqrt-iter (/ x 2.) x))
+
+;; Exercise 1.6
+;; Since `new-if' is a procedure that uses applicative-order evaluation,
+;; it evals its arguments. This includes the recursive call
+;; to `sqrt-iter', leading to infinite recursion
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+(define (infinite-sqrt-iter guess x)
+  (new-if (good-enough? guess x)
+          guess
+          (sqrt-iter (improve guess x) x)))
+
+;; Exercise 1.7
+;; For very small values:
+(display (sqrt 1e-18))
+;; It will display 5e-19, which is different from 1e-9
+;;
