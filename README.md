@@ -1,6 +1,3 @@
-# Notes for SICP
+# Notes for SICP/wizard book.
 
-Notes, exercises and the like with Structure and Interpretation of Computer Programs (SICP/wizard book).
-
-The two interpreters I use are Cisco Chez and GNU Guile.
-
+Notes on [Structure and Interpretation of Computer Programs, 2nd Ed](https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)
